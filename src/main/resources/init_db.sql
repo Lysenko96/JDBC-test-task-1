@@ -1,0 +1,17 @@
+-- CREATE USER mate WITH ENCRYPTED PASSWORD 'mate' SUPERUSER;
+-- GRANT ALL PRIVILEGES ON DATABASE jdbc TO mate;
+--
+-- CREATE DATABASE jdbc;
+--
+-- ALTER DATABASE jdbc OWNER TO mate;
+
+DROP TABLE IF EXISTS manufacturers;
+
+CREATE TABLE manufacturers(
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(64),
+    country VARCHAR(64),
+    is_deleted BOOLEAN DEFAULT FALSE
+);
+
+GRANT ALL PRIVILEGES ON TABLE manufacturers TO mate;

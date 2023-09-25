@@ -1,9 +1,17 @@
-CREATE DATABASE `taxi_db`;
+-- CREATE USER mate WITH ENCRYPTED PASSWORD 'mate' SUPERUSER;
+-- GRANT ALL PRIVILEGES ON DATABASE jdbc TO mate;
+--
+-- CREATE DATABASE jdbc;
+--
+-- ALTER DATABASE jdbc OWNER TO mate;
 
-CREATE TABLE `manufacturers` (
-                                 `id` bigint NOT NULL AUTO_INCREMENT,
-                                 `name` varchar(255) DEFAULT NULL,
-                                 `country` varchar(255) DEFAULT NULL,
-                                 `is_deleted` tinyint NOT NULL DEFAULT '0',
-                                 PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+DROP TABLE IF EXISTS manufacturers;
+
+CREATE TABLE manufacturers(
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(64),
+    country VARCHAR(64),
+    is_deleted BOOLEAN DEFAULT FALSE
+);
+
+GRANT ALL PRIVILEGES ON TABLE manufacturers TO mate;
